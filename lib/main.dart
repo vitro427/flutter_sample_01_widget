@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_sample_01_widget/screens/designPrac1.dart';
 import 'package:flutter_sample_01_widget/screens/text_field_widget.dart';
+import 'package:flutter_sample_01_widget/screens/switch_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,22 +29,28 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => textFieldWidget()),
-                );
-              },
-              child: const Text('text_field_widget'),
-            ),
+            menuBtn(context, textFieldWidget(), 'text_field_widget'),
             const SizedBox(height: 10),
-            ElevatedButton(onPressed: () {}, child: const Text('Hello2')),
+            menuBtn(context, designPrac1(), 'app Design practice'),
             const SizedBox(height: 10),
-            ElevatedButton(onPressed: () {}, child: const Text('Hello3')),
+            menuBtn(context, SwitchWidget(), 'switch widget'),
           ],
         ),
       ),
     );
   }
+
+  ElevatedButton menuBtn(BuildContext vContext, Widget vPage, String vTitle){
+    return ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            vContext,
+            MaterialPageRoute(builder: (context) => vPage),
+          );
+        },
+        child: Text(vTitle)
+    );
+  }
 }
+
+
